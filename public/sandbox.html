@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:; worker-src blob:; style-src 'unsafe-inline'; img-src data: blob:; font-src data:; media-src data: blob:; connect-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'none'"
+    />
+    <meta name="referrer" content="no-referrer" />
+    <title>NexusIDE sandbox</title>
+  </head>
+  <body>
+    <script>
+/*
+ * Loader that runs inside the sandboxed iframe (opaque origin, see src/runtime/csp.ts).
+ * It holds no secrets and does only two things on request from the host window:
+ *   run-document  -> replace this document with generated HTML (the DOM preview)
+ *   run-worker    -> start a Worker from a Blob (console programs and the REPL) and relay its messages
+ * Only messages from the embedding window are honoured.
+ */
+(function () {
+  'use strict';
+  var worker = null;
+
+  function toHost(message) {
+    parent.postMessage(message, '*');
+  }
+
+  function startWorker(code) {
+    if (worker) worker.terminate();
+    var url = URL.createObjectURL(new Blob([code], { type: 'text/javascript' }));
+    worker = new Worker(url);
+    URL.revokeObjectURL(url);
+    worker.onmessage = function (event) {
+      var data = event.data;
+      if (data && data.source === 'nexus-sandbox') toHost(data);
+    };
+    worker.onerror = function (event) {
+      event.preventDefault();
+      toHost({ source: 'nexus-sandbox', type: 'error', message: event.message || 'Worker error' });
+    };
+  }
+
+  window.addEventListener('message', function (event) {
+    if (event.source !== parent) return;
+    var data = event.data;
+    if (!data || data.source !== 'nexus-host') return;
+    if (data.type === 'run-document' && typeof data.html === 'string') {
+      document.open();
+      document.write(data.html);
+      document.close();
+    } else if (data.type === 'run-worker' && typeof data.code === 'string') {
+      startWorker(data.code);
+    } else if (data.type === 'to-worker' && worker) {
+      worker.postMessage(data.payload);
+    }
+  });
+
+  toHost({ source: 'nexus-sandbox', type: 'ready' });
+})();
+    </script>
+  </body>
+</html>

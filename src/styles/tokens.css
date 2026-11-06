@@ -1,0 +1,105 @@
+/*
+ * Design tokens. Three themes: graphite (dark), paper (light), contrast (high contrast).
+ * Every text/background pair used by the UI is checked by `pnpm run contrast` (scripts/contrast.mjs).
+ */
+:root {
+  --font-ui: 'Instrument Sans Variable', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'Cascadia Code', Consolas, monospace;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+
+  --radius-s: 4px;
+  --radius-m: 8px;
+  --radius-l: 14px;
+
+  --text-xs: 0.75rem;
+  --text-s: 0.8125rem;
+  --text-m: 0.9375rem;
+  --text-l: 1.125rem;
+  --text-xl: 1.5rem;
+
+  --rail-w: 52px;
+  --titlebar-h: 48px;
+  --status-h: 28px;
+  --tab-h: 40px;
+  --target: 44px;
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+}
+
+:root,
+:root[data-theme='graphite'] {
+  color-scheme: dark;
+  --bg: #14161a;
+  --surface: #1a1d22;
+  --surface-2: #22262d;
+  --surface-3: #2b3038;
+  --border: #2e333b;
+  --border-strong: #6b7380;
+  --text: #ebe8e1;
+  --text-muted: #a6abb4;
+  --text-faint: #9ba1ab;
+  --accent: #f2a65a;
+  --accent-ink: #1b1308;
+  --accent-soft: rgba(242, 166, 90, 0.14);
+  --danger: #ff7b72;
+  --success: #7ee2a8;
+  --warning: #e9c46a;
+  --info: #79b8ff;
+  --focus: #f2a65a;
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  --scrim: rgba(8, 9, 11, 0.62);
+}
+
+:root[data-theme='paper'] {
+  color-scheme: light;
+  --bg: #efeadf;
+  --surface: #f7f4ec;
+  --surface-2: #ece6d8;
+  --surface-3: #e1d9c7;
+  --border: #d6cdb9;
+  --border-strong: #8f866f;
+  --text: #211f1a;
+  --text-muted: #57534a;
+  --text-faint: #5f5a50;
+  --accent: #9a3f08;
+  --accent-ink: #fff8f0;
+  --accent-soft: rgba(154, 63, 8, 0.1);
+  --danger: #b3261e;
+  --success: #156a3c;
+  --warning: #7a5000;
+  --info: #0b5cad;
+  --focus: #9a3f08;
+  --shadow: 0 12px 40px rgba(60, 45, 20, 0.22);
+  --scrim: rgba(33, 31, 26, 0.45);
+}
+
+:root[data-theme='contrast'] {
+  color-scheme: dark;
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --surface-2: #161616;
+  --surface-3: #262626;
+  --border: #8a8a8a;
+  --border-strong: #ffffff;
+  --text: #ffffff;
+  --text-muted: #ececec;
+  --text-faint: #d4d4d4;
+  --accent: #ffd54a;
+  --accent-ink: #000000;
+  --accent-soft: rgba(255, 213, 74, 0.2);
+  --danger: #ff8a80;
+  --success: #8affb4;
+  --warning: #ffe082;
+  --info: #8ec9ff;
+  --focus: #ffd54a;
+  --shadow: 0 0 0 2px #ffffff;
+  --scrim: rgba(0, 0, 0, 0.8);
+}

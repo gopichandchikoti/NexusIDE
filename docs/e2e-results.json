@@ -1,0 +1,390 @@
+{
+  "browser": "Edge 156.0.4314.58 (headless, Playwright 1.64.1)",
+  "at": "2026-11-06T00:18:29.786Z",
+  "rows": [
+    {
+      "id": "E-01",
+      "area": "First run",
+      "name": "Start screen with 4 templates, no console errors, correct title",
+      "result": "PASS",
+      "evidence": "4 templates, 0 console errors",
+      "ms": 1046
+    },
+    {
+      "id": "E-02",
+      "area": "Run",
+      "name": "Web template: Run shows the page in the sandbox and console output arrives",
+      "result": "PASS",
+      "evidence": "page rendered in sandbox; click -> console.log relayed; DOM updated",
+      "ms": 1394
+    },
+    {
+      "id": "E-03",
+      "area": "Persistence",
+      "name": "Edits autosave and survive a reload (open tabs restored)",
+      "result": "PASS",
+      "evidence": "content + tab restored after reload",
+      "ms": 2377
+    },
+    {
+      "id": "E-04",
+      "area": "Diagnostics",
+      "name": "TypeScript error appears in Problems and status bar",
+      "result": "PASS",
+      "evidence": "Monaco TS diagnostics surfaced: \"not assignable\"",
+      "ms": 1703
+    },
+    {
+      "id": "E-05",
+      "area": "Run",
+      "name": "TypeScript console program runs in a Worker and finishes",
+      "result": "PASS",
+      "evidence": "15 primes, largest 47; chip Finished",
+      "ms": 899
+    },
+    {
+      "id": "E-06",
+      "area": "Files",
+      "name": "Create / validate / rename / folder / delete / undo through the UI",
+      "result": "PASS",
+      "evidence": "validation errors shown; rename/folder/nesting OK; delete undone via toast",
+      "ms": 2801
+    },
+    {
+      "id": "E-07",
+      "area": "Palette",
+      "name": "Command palette, quick open and shortcuts",
+      "result": "PASS",
+      "evidence": "Ctrl+Shift+P, Ctrl+P, F1, Esc, Alt+P all work; theme switched via palette",
+      "ms": 654
+    },
+    {
+      "id": "E-08",
+      "area": "Search",
+      "name": "Search across files, click result reveals the line",
+      "result": "PASS",
+      "evidence": "2 results in 2 files; reveal -> Ln 3; invalid regex reported; a* terminates",
+      "ms": 1626
+    },
+    {
+      "id": "E-09",
+      "area": "ZIP",
+      "name": "Export ZIP then import into a clean browser profile (roundtrip)",
+      "result": "PASS",
+      "evidence": "4 files exported (nexuside-20261105-1816.zip) and re-imported with folder structure",
+      "ms": 1257
+    },
+    {
+      "id": "E-10",
+      "area": "Errors",
+      "name": "Running an unsupported language explains why (no fake success)",
+      "result": "PASS",
+      "evidence": "Warning. Python files can't run in this browser sandbox. NexusIDE runs HTML, JavaScript, TypeScript and React projects.",
+      "ms": 898
+    },
+    {
+      "id": "E-11",
+      "area": "Backups",
+      "name": "Template over existing work asks first, backs up, and the backup restores",
+      "result": "PASS",
+      "evidence": "confirm -> backup created -> restore brought precious.txt back",
+      "ms": 1544
+    },
+    {
+      "id": "E-12",
+      "area": "Run",
+      "name": "React 18.3.1 template renders and responds to clicks (vendored, offline)",
+      "result": "PASS",
+      "evidence": "JSX/TSX bundled in the browser; hooks work; Total: 2 after two clicks",
+      "ms": 1092
+    },
+    {
+      "id": "E-13",
+      "area": "Terminal",
+      "name": "JavaScript REPL in the sandbox: evaluate, keep state, report errors",
+      "result": "PASS",
+      "evidence": "6*7 => 42; state kept across lines; ReferenceError reported; fetch blocked in REPL",
+      "ms": 934
+    },
+    {
+      "id": "E-14",
+      "area": "Layout",
+      "name": "Layout choices persist across reload (dock, hidden panes)",
+      "result": "PASS",
+      "evidence": "{\"showSidebar\":false,\"sidebarPanel\":\"files\",\"showPanel\":true,\"panelTab\":\"console\",\"showPreview\":true,\"previewDock\":\"bottom\"}",
+      "ms": 564
+    },
+    {
+      "id": "E-15",
+      "area": "Import",
+      "name": "Project with TSX + JSON + CSS imports bundles and runs",
+      "result": "PASS",
+      "evidence": "TS module graph + JSON + CSS resolved offline; \"Hello, Ada!\" rendered",
+      "ms": 924
+    },
+    {
+      "id": "S-01",
+      "area": "Sandbox",
+      "name": "Hostile PAGE: 20 escape attempts (network, storage, parent, popups, frames, forms) are all blocked",
+      "result": "PASS",
+      "evidence": "20 attempts, 0 allowed; HTTP requests/upgrades/internet at attacker: 0. Bare TCP connections without a request: 1 (during: nested iframe). fetch app origin: blocked; fetch internet: blocked; XMLHttpRequest: blocked; WebSocket: blocked; sendBeacon: blocked; image beacon: blocked; parent.document: blocked; window.top.document: blocked; window.open: blocked; localStorage: blocked; sessionStorage: blocked; document.cookie: blocked; indexedDB: blocked; dynamic import(): blocked; Worker from app origin: blocked; nested iframe: blocked; form.submit(): blocked; form.requestSubmit(): blocked; anchor click: blocked; top navigation: blocked",
+      "ms": 4117
+    },
+    {
+      "id": "S-02",
+      "area": "Sandbox",
+      "name": "Hostile CONSOLE PROGRAM in a Worker: 8 escape attempts are all blocked",
+      "result": "PASS",
+      "evidence": "Network ground truth - canary: 0 connections, 0 requests, 0 upgrades; example.com: 0 requests. worker fetch internet: blocked; worker fetch app origin: blocked; worker importScripts: blocked; worker WebSocket: blocked; worker XMLHttpRequest: blocked; worker indexedDB: blocked; worker nested Worker: blocked; worker sendBeacon: blocked",
+      "ms": 969
+    },
+    {
+      "id": "S-03",
+      "area": "Sandbox",
+      "name": "iframe has opaque origin and only allow-scripts allow-forms",
+      "result": "PASS",
+      "evidence": "sandbox=\"allow-scripts allow-forms\", allow=\"\", location.origin inside frame = null",
+      "ms": 868
+    },
+    {
+      "id": "S-04",
+      "area": "Isolation",
+      "name": "Endless loop in a PAGE preview: app stays responsive and the watchdog stops it",
+      "result": "PASS",
+      "evidence": "host responsive (3ms) during the loop; watchdog -> \"Timed out\"; next run worked after 10.1s",
+      "ms": 14755
+    },
+    {
+      "id": "S-05",
+      "area": "Isolation",
+      "name": "Endless loop in a CONSOLE program is killed at the timeout; UI stays responsive",
+      "result": "PASS",
+      "evidence": "killed by timeout (3s setting, observed ~2.7s after start); host latency 14ms; next program finished",
+      "ms": 3662
+    },
+    {
+      "id": "S-06",
+      "area": "Isolation",
+      "name": "Output flood (200k console.log calls) is capped; UI remains usable",
+      "result": "PASS",
+      "evidence": "500 lines kept of 200000; palette opened in 52ms after the flood",
+      "ms": 1128
+    },
+    {
+      "id": "S-07",
+      "area": "Isolation",
+      "name": "Page preview + REPL + a second run are isolated and cleaned up",
+      "result": "PASS",
+      "evidence": "REPL \"typeof window === 'undefined'\" -> true (Worker scope); preview kept counting (3->7); rerun replaced the frame; Stop removed it",
+      "ms": 3175
+    },
+    {
+      "id": "S-08",
+      "area": "Isolation",
+      "name": "After all attacks the app database and settings are intact",
+      "result": "PASS",
+      "evidence": "2 nodes + settings unchanged after the hostile run",
+      "ms": 4052
+    },
+    {
+      "id": "S-09",
+      "area": "Import",
+      "name": "Malicious ZIPs (absolute path, bomb, binary, node_modules) are rejected or skipped safely",
+      "result": "PASS",
+      "evidence": "absolute path rejected; 40 MB-expansion bomb rejected at the 25 MB cap; node_modules skipped on a valid import",
+      "ms": 6751
+    },
+    {
+      "id": "S-10",
+      "area": "Navigation",
+      "name": "A page that navigates its own frame away delivers NO HTTP request and is stopped",
+      "result": "PASS",
+      "evidence": "location.href: 0 HTTP requests, 1 TCP connection(s); location.replace: 0 HTTP requests, 1 TCP connection(s); window.location.assign: 0 HTTP requests, 1 TCP connection(s); meta refresh: 0 HTTP requests, 1 TCP connection(s). The frame ends on a browser error page (host CSP frame-src 'self') and the watchdog ends the run. Residual: the browser may still dial the target before refusing (DNS/TCP side channel); the sandbox holds no secrets.",
+      "ms": 18843
+    },
+    {
+      "id": "R-01",
+      "area": "Recovery",
+      "name": "Renderer crash with unsaved edits: edits are offered back on next launch",
+      "result": "PASS",
+      "evidence": "renderer crash event observed; banner shown; Restore recovered the typed text",
+      "ms": 4296
+    },
+    {
+      "id": "R-02",
+      "area": "Recovery",
+      "name": "Discarding recovered edits keeps the saved text",
+      "result": "PASS",
+      "evidence": "banner gone after Discard and after reload; saved text intact",
+      "ms": 3745
+    },
+    {
+      "id": "R-03",
+      "area": "Corrupt data",
+      "name": "Damaged records in IndexedDB are skipped and reported; the app still works",
+      "result": "PASS",
+      "evidence": "Warning. Some stored data was damaged: 1 item(s) skipped, 1 repaired.",
+      "ms": 606
+    },
+    {
+      "id": "R-04",
+      "area": "Quota",
+      "name": "Storage quota error surfaces in the UI and recovers when space returns",
+      "result": "PASS",
+      "evidence": "toast \"Browser storage is full\"; status \"Save failed\"; status returns to \"Saved\" after space is available",
+      "ms": 3278
+    },
+    {
+      "id": "R-05",
+      "area": "Storage unavailable",
+      "name": "IndexedDB blocked (private mode): banner, session editing still works",
+      "result": "PASS",
+      "evidence": "banner + status \"Not saved\"; template, editor and Run work in session-only mode; Ctrl+S explains why it cannot save",
+      "ms": 936
+    },
+    {
+      "id": "R-06",
+      "area": "Offline",
+      "name": "Editor chunk fails to load: error surface with retry, then recovery",
+      "result": "PASS",
+      "evidence": "\"The editor could not be loaded\" + Try again / Reload page; editor loads after reconnect",
+      "ms": 888
+    },
+    {
+      "id": "R-07",
+      "area": "Offline",
+      "name": "After load, going offline does not break editing, running or the REPL",
+      "result": "PASS",
+      "evidence": "page preview + REPL worked with the network disabled; a reload while offline restored the workspace and ran it again",
+      "ms": 2367
+    },
+    {
+      "id": "R-08",
+      "area": "Offline",
+      "name": "Terminal chunk missing while offline shows a retry surface (app stays alive)",
+      "result": "PASS",
+      "evidence": "terminal failure is contained by ChunkBoundary",
+      "ms": 436
+    },
+    {
+      "id": "R-09",
+      "area": "Multi-tab",
+      "name": "A second tab is told when another tab saved the workspace",
+      "result": "PASS",
+      "evidence": "BroadcastChannel notice appeared in tab B after tab A saved",
+      "ms": 5384
+    },
+    {
+      "id": "R-10",
+      "area": "Performance",
+      "name": "Large file (900 KB): opens, stays editable, keystroke latency measured",
+      "result": "PASS",
+      "evidence": "opened in 485 ms; 20 keystrokes: median 19 ms, p95 30 ms (Playwright round-trip included)",
+      "ms": 1504
+    },
+    {
+      "id": "R-11",
+      "area": "Accessibility",
+      "name": "prefers-reduced-motion and the Motion setting disable animations",
+      "result": "PASS",
+      "evidence": "OS preference -> 1e-05s; Motion setting: 0.2s -> 1e-05s",
+      "ms": 930
+    },
+    {
+      "id": "R-12",
+      "area": "Corrupt data",
+      "name": "Garbage in localStorage (settings, layout, session) falls back to defaults",
+      "result": "PASS",
+      "evidence": "app booted with defaults (resolved theme \"paper\")",
+      "ms": 386
+    },
+    {
+      "id": "R-13",
+      "area": "Persistence",
+      "name": "Autosave off: edits persist only after Ctrl+S",
+      "result": "PASS",
+      "evidence": "status \"Unsaved changes (Ctrl+S)\" for 1.8 s, then \"Saved\" after Ctrl+S",
+      "ms": 2887
+    },
+    {
+      "id": "R-14",
+      "area": "Formatting",
+      "name": "Format document works (Monaco formatter) via the command palette",
+      "result": "PASS",
+      "evidence": "one-line JSON expanded to multiple lines by Alt+Shift+F",
+      "ms": 959
+    },
+    {
+      "id": "A-01",
+      "area": "Accessibility (axe)",
+      "name": "axe-core on the start screen, graphite theme",
+      "result": "PASS",
+      "evidence": "start/graphite: 0 serious/critical; 0 violations",
+      "ms": 1286
+    },
+    {
+      "id": "A-02",
+      "area": "Accessibility (axe)",
+      "name": "axe-core on the start screen, paper theme",
+      "result": "PASS",
+      "evidence": "start/paper: 0 serious/critical; 0 violations",
+      "ms": 1270
+    },
+    {
+      "id": "A-03",
+      "area": "Accessibility (axe)",
+      "name": "axe-core on the start screen, contrast theme",
+      "result": "PASS",
+      "evidence": "start/contrast: 0 serious/critical; 0 violations",
+      "ms": 1234
+    },
+    {
+      "id": "A-04",
+      "area": "Accessibility (axe)",
+      "name": "axe-core on the workbench with editor, preview and console",
+      "result": "PASS",
+      "evidence": "workbench: 0 serious/critical; other: page-has-heading-one(moderate) x1 @ html",
+      "ms": 2660
+    },
+    {
+      "id": "A-05",
+      "area": "Accessibility (axe)",
+      "name": "axe-core on Settings, Command palette and Shortcuts dialogs",
+      "result": "PASS",
+      "evidence": "settings: 0 serious/critical; other: landmark-no-duplicate-banner(moderate) x1 @ .titlebar; landmark-unique(moderate) x2 @ .titlebar | palette: 0 serious/critical; 0 violations | shortcuts: 0 serious/critical; other: landmark-no-duplicate-banner(moderate) x1 @ .titlebar; landmark-unique(moderate) x1 @ .titlebar",
+      "ms": 2664
+    },
+    {
+      "id": "A-06",
+      "area": "Keyboard",
+      "name": "Keyboard-only: skip link, palette, tree arrows, tab arrows, dialog focus trap and restore",
+      "result": "PASS",
+      "evidence": "skip link first; tree ArrowDown -> \"b.ts\"; tab ArrowLeft; focus trapped in dialog; focus restored to the opener",
+      "ms": 960
+    },
+    {
+      "id": "A-07",
+      "area": "Responsive",
+      "name": "360x740 phone: no horizontal overflow, 44px targets, preview survives view switches",
+      "result": "PASS",
+      "evidence": "no overflow; every visible control >= 44px in at least one dimension... (all both); preview kept running across view switches",
+      "ms": 1027
+    },
+    {
+      "id": "A-08",
+      "area": "Responsive",
+      "name": "200% zoom equivalent (640x400) and landscape phone (740x360) have no overflow and keep Run reachable",
+      "result": "PASS",
+      "evidence": "640x400: ok, 740x360: ok",
+      "ms": 1606
+    },
+    {
+      "id": "A-09",
+      "area": "Contrast",
+      "name": "Rendered text meets WCAG AA contrast in all three themes (axe color-contrast on real DOM)",
+      "result": "PASS",
+      "evidence": "graphite: 0 failures, paper: 0 failures, contrast: 0 failures",
+      "ms": 3748
+    }
+  ]
+}
