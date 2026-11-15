@@ -8,6 +8,7 @@ no network access and no way to read the editor's data.
 
 It is **not** VS Code: there is no Node, no npm install, no shell, no debugger, no extensions, no accounts, and no
 server. See [docs/KNOWN_LIMITATIONS.md](docs/KNOWN_LIMITATIONS.md) before relying on it.
+**Live demo:** https://nexus-ide.vercel.app
 
 ## Quick start
 
